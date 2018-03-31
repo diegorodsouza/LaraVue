@@ -10,7 +10,7 @@
                 <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
 
                 <tabela-lista 
-                  v-bind:titulos="['#','Nome','Descrição']" 
+                  v-bind:titulos="['#','Nome','Descrição', 'Data']" 
                   v-bind:itens="{{$listaArtigos}}"
                   ordem="asc" ordemcol="1"
                   criar="#c" detalhe="#dt" editar="#e" deletar="#d" token="adwd"
@@ -36,7 +36,7 @@
               <label for="descricao">Descrição</label>
               <input type="text" class="form-control" v-model="$store.state.item.descricao" id="descricao" placeholder="Descrição...">
             </div>
-        
+
           </formulario>
 
           <span slot="botoes">
@@ -50,16 +50,26 @@
     </modal>
 
     <modal nome="adicionar" titulo="Adicionar">
-        <formulario id="formAdicionar" css="" action="#" method="put" enctype="multipart/form-data" token="464548">
+        <formulario id="formAdicionar" css="" action="{{route('artigos.store')}}" method="post" enctype="" token="{{csrf_token()}}">
 
           <div class="form-group">
             <label for="titulo">Título</label>
-            <input type="text" class="form-control" id="titulo" placeholder="Título...">
+            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Título...">
           </div>
 
           <div class="form-group">
             <label for="descricao">Descrição</label>
-            <input type="text" class="form-control" id="descricao" placeholder="Descrição...">
+            <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição...">
+          </div>
+
+          <div class="form-group">
+            <label for="conteudo">Conteúdo</label>
+            <textarea class="form-control" id="conteudo" name="conteudo"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="data">Data</label>
+            <input type="datetime-local" class="form-control" id="data" name="data">
           </div>
 
         </formulario>
