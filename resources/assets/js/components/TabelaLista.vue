@@ -28,22 +28,22 @@
                   <input type="hidden" name="_method" value="DELETE">
                   <input type="hidden" name="_token" v-bind:value="token">
         
-                  <modal-link v-if="detalhe && modal" tipo="link" nome="detalhe" titulo="Detalhes"></modal-link>
-                  <a v-if="detalhe && !modal" v-bind:href="detalhe">Detalhes</a> |
+                  <a v-if="detalhe && !modal" v-bind:href="detalhe">Detalhes</a> 
+                  <modal-link v-if="detalhe && modal" v-bind:item="item" tipo="link" nome="detalhe" titulo="Detalhes"></modal-link> |
 
-                  <modal-link v-if="editar && modal" tipo="link" nome="editar" titulo="Editar"></modal-link>
-                  <a v-if="editar && !modal" v-bind:href="editar">Editar</a> |
+                  <a v-if="editar && !modal" v-bind:href="editar">Editar</a> 
+                  <modal-link v-if="editar && modal" tipo="link" v-bind:item="item" nome="editar" titulo="Editar"></modal-link> |
 
                   <a href="#" v-on:click="executaForm(index)">Excluir</a>
                 </form>
 
                 <span v-if="!deletar || !token">
 
-                  <modal-link v-if="detalhe && modal" tipo="link" nome="detalhe" titulo="Detalhes"></modal-link>                  
-                  <a v-if="detalhe && !modal" v-bind:href="detalhe">Detalhes</a> |
+                  <a v-if="detalhe && !modal" v-bind:href="detalhe">Detalhes</a> 
+                  <modal-link v-if="detalhe && modal" v-bind:item="item" tipo="link" nome="detalhe" titulo="Detalhes"></modal-link> |
 
-                  <modal-link v-if="editar && modal" tipo="link" nome="editar" titulo="Editar"></modal-link>                  
-                  <a v-if="editar && !modal" v-bind:href="editar">Editar</a> |
+                  <a v-if="editar && !modal" v-bind:href="editar">Editar</a> 
+                  <modal-link v-if="editar && modal" tipo="link" v-bind:item="item" nome="editar" titulo="Editar"></modal-link> |
                 </span>
 
               </td>
@@ -66,14 +66,14 @@ export default {
     "deletar",
     "token",
     "ordem",
-    "ordemCol",
+    "ordemcol",
     "modal"
   ],
   data: function() {
     return {
       buscar: "",
       ordemAux: this.ordem || "asc",
-      ordemAuxCol: this.ordemCol || 0
+      ordemAuxCol: this.ordemcol || 0
     };
   },
   methods: {
@@ -91,27 +91,27 @@ export default {
   computed: {
     lista: function() {
       let ordem = this.ordemAux;
-      let ordemCol = this.ordemAuxCol;
+      let ordemcol = this.ordemAuxCol;
 
       ordem = ordem.toLowerCase();
-      ordemCol = parseInt(ordemCol);
+      ordemcol = parseInt(ordemcol);
 
       if (ordem == "asc") {
         this.itens.sort(function(a, b) {
-          if (Object.values(a)[ordemCol] > Object.values(b)[ordemCol]) {
+          if (Object.values(a)[ordemcol] > Object.values(b)[ordemcol]) {
             return 1;
           }
-          if (Object.values(a)[ordemCol] < Object.values(b)[ordemCol]) {
+          if (Object.values(a)[ordemcol] < Object.values(b)[ordemcol]) {
             return -1;
           }
           return 0;
         });
       } else {
         this.itens.sort(function(a, b) {
-          if (Object.values(a)[ordemCol] < Object.values(b)[ordemCol]) {
+          if (Object.values(a)[ordemcol] < Object.values(b)[ordemcol]) {
             return 1;
           }
-          if (Object.values(a)[ordemCol] > Object.values(b)[ordemCol]) {
+          if (Object.values(a)[ordemcol] > Object.values(b)[ordemcol]) {
             return -1;
           }
           return 0;

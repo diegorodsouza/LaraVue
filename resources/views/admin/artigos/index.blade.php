@@ -12,7 +12,7 @@
                 <tabela-lista 
                   v-bind:titulos="['#','Nome','Descrição']" 
                   v-bind:itens="{{$listaArtigos}}"
-                  ordem="asc" ordemCol="1"
+                  ordem="asc" ordemcol="1"
                   criar="#c" detalhe="#dt" editar="#e" deletar="#d" token="adwd"
                   modal="sim"             
                   >
@@ -32,18 +32,25 @@
 
             <div class="form-group">
               <label for="titulo">Título</label>
-              <input type="text" class="form-control" id="titulo" placeholder="Título...">
+              <input type="text" class="form-control" v-model="$store.state.item.titulo" id="titulo" placeholder="Título...">
             </div>
 
             <div class="form-group">
               <label for="descricao">Descrição</label>
-              <input type="text" class="form-control" id="descricao" placeholder="Descrição...">
+              <input type="text" class="form-control" v-model="$store.state.item.descricao" id="descricao" placeholder="Descrição...">
             </div>
 
             <button type="submit" class="btn btn-info">Atualizar</button>
           </form>
 
         </formulario>
+      </painel>
+    </modal>
+  
+    <modal nome="detalhe">
+      <painel v-bind:titulo="$store.state.item.titulo">
+        <p>@{{$store.state.item.descricao}}</p>
+        
       </painel>
     </modal>
 
