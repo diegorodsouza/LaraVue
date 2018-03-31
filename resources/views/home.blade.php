@@ -4,7 +4,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
-                <painel titulo="Dashboard">
+              
+              <painel titulo="Dashboard">
+                  <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
                   <div class="row">
                     <div class="col-md-4">
                       <caixa titulo="Artigos" qtd="150" icone="ion ion-pie-graph" url="{{route('artigos.index')}}" cor="orange">
@@ -23,6 +25,7 @@
                     </div>
                   </div>
                 </painel>
+                
             </div>
         </div>
     </div>

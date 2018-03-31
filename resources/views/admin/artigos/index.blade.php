@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
               <painel titulo="Artigos">
+                <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
                 <tabela-lista 
                   v-bind:titulos="['#','Nome','Descrição']" 
                   v-bind:itens="[['1','teste1','titulo1'],['2','teste2','titulo2'],['3','teste3','titulo3']]"
