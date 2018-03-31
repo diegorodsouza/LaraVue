@@ -9,15 +9,12 @@
 
                 <migalhas v-bind:lista="{{$listaMigalhas}}"></migalhas>
 
-                <modal-link tipo="button" nome="olar" titulo="Oie"></modal-link>
-
                 <tabela-lista 
                   v-bind:titulos="['#','Nome','Descrição']" 
                   v-bind:itens="{{$listaArtigos}}"
-                  
                   ordem="asc" ordemCol="1"
                   criar="#c" detalhe="#dt" editar="#e" deletar="#d" token="adwd"
-                  
+                  modal="sim"             
                   >
                 </tabela-lista>
 
@@ -27,7 +24,30 @@
         </div>
     </div>
 
-    <modal titulo="Oie" nome="olar">
+    <modal nome="editar">
+      <painel titulo="Editar">
+        <formulario css="" action="#" method="put" enctype="" token="">
+
+        <form>
+
+            <div class="form-group">
+              <label for="titulo">Título</label>
+              <input type="text" class="form-control" id="titulo" placeholder="Título...">
+            </div>
+
+            <div class="form-group">
+              <label for="descricao">Descrição</label>
+              <input type="text" class="form-control" id="descricao" placeholder="Descrição...">
+            </div>
+
+            <button type="submit" class="btn btn-info">Atualizar</button>
+          </form>
+
+        </formulario>
+      </painel>
+    </modal>
+
+    <modal nome="adicionar">
       <painel titulo="Adicionar">
         <formulario css="" action="#" method="post" enctype="" token="">
 
